@@ -66,7 +66,7 @@ function NavLink(props) {
         height: '100%',
         color: colors.text,
         borderRadius: '2px',
-        borderLeft: '5px solid transparent',
+        borderLeft: '6px solid transparent',
         ':hover': {
           color: colors.indigo,
           textDecoration: 'none',

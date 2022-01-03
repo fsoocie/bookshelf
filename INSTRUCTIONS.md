@@ -117,11 +117,8 @@ credit will really simplify things for you!
 - `src/components/status-buttons.js`
 - `src/components/book-row.js`
 - `src/components/rating.js`
-- `src/screens/discover.js`
 - `src/screens/book.js`
 - `src/components/list-item-list.js`,
-- `src/app.js`
-- `src/utils/api-client.js`
 
 ## Extra Credit
 

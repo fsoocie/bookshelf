@@ -1,12 +1,11 @@
-// 🐨 we're going to use React hooks in here now so we'll need React
+import React from 'react'
 import {useQuery, useMutation, queryCache} from 'react-query'
-// 🐨 get AuthContext from context/auth-context
+import {AuthContext} from "../context/auth-context.exercise";
 import {setQueryDataForBook} from './books'
 import {client} from './api-client'
 
-// 💣 remove the user argument here
-function useListItems(user) {
-  // 🐨 get the user from React.useContext(AuthContext)
+function useListItems() {
+  const {user} = React.useContext(AuthContext)
   const {data} = useQuery({
     queryKey: 'list-items',
     queryFn: () =>
@@ -20,10 +19,8 @@ function useListItems(user) {
   return data ?? []
 }
 
-// 💣 remove the user argument here
-function useListItem(bookId, user) {
-  // 💣 you no longer need to pass the user here
-  const listItems = useListItems(user)
+function useListItem(bookId) {
+  const listItems = useListItems()
   return listItems.find(li => li.bookId === bookId) ?? null
 }
 
@@ -33,9 +30,7 @@ const defaultMutationOptions = {
   onSettled: () => queryCache.invalidateQueries('list-items'),
 }
 
-// 💣 remove the user argument here
 function useUpdateListItem(user, options) {
-  // 🐨 get the user from React.useContext(AuthContext)
   return useMutation(
     updates =>
       client(`list-items/${updates.id}`, {
